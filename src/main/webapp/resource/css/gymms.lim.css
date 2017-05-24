@@ -1,0 +1,65 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+@media (max-width: 980px) {
+    /* Enable use of floated navbar text */
+    .navbar-text.pull-right {
+        float: none;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+/* 导航栏 ***********************************************************/
+
+/*导航栏的背景高度*/
+.navbar {
+    min-height: 80px;
+}
+
+
+/*项目名*/
+
+.navbar-brand {
+    height: 20px;
+    padding-top: 30px;
+}
+/*校徽*/
+.gymms-badge{
+    padding-top: 20px;
+}
+
+.gymms-badge img {
+    height: 40px;
+    width: 40px;
+}
+/*各个部分的连接：首页-场地管理----*/
+.navbar-nav>li>a{
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+/*ull*/
+.navbar-toggle {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.gymms-login{
+    height: 20px;
+    padding-top: 30px;
+}
+
+
+
+/* 字体设计 **************************************************/
+/*导航栏*/
+.navbar-brand{
+    font-size: 20px;
+}
+.navbar {
+    font-size: 15px;
+}

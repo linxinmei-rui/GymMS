@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by lim9527 on 5/20 0020.
  */
 @Controller
-@RequestMapping(value = "/match")
+@RequestMapping(value = "/user")
 public class UserAction {
 
     @Autowired

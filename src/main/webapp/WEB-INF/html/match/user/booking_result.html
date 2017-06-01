@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>赛事预约结果</title>
+    <base href="/GymMS/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resource/css/gymms.common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航栏 ===============================================-->
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top"></nav>
+
+<!-- main ==================================================-->
+<br/><br/><br/><br/><br/>
+
+
+<div>
+
+</div>
+<table id="GroundAllocateTable" class="table">
+    <caption>场地安排</caption>
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>场地名称</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>金额/元</th>
+            <th>备注</th>
+        </tr>
+    </thead>
+</table>
+
+
+<table id="EquipmentAllocateTable" class="table">
+    <caption>器材安排</caption>
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>器材名称</th>
+            <th>数量</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>金额/元</th>
+            <th>备注</th>
+        </tr>
+    </thead>
+</table>
+
+
+<table id="OthersAllocateTable" class="table">
+    <caption>赛事安排</caption>
+    <thead>
+        <tr>
+            <th>比赛名称</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>金额/元</th>
+            <th>备注</th>
+        </tr>
+    </thead>
+</table>
+
+
+
+
+<!-- footer=================================================-->
+<div id="footer" class="footer well well-lg"></div>
+<!-- js -->
+<script src="resource/js/jquery-3.2.1.js"></script>
+<script src="resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="resource/js/gymms-common.js"></script>
+<script src="resource/js/gymms-match.js"></script>
+<script>
+    $("#MatchBookingItemTable").showUserMatchBookingTable();
+</script>
+
+</body>
+</html>

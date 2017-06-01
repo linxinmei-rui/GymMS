@@ -4,9 +4,27 @@
 
 <mapper namespace="com.yuerbao.gymms.user.mapper.UserMapper">
 
+
+
     <!--根据用户id返回用户-->
+
     <select id="findUserById" parameterType="int" resultType="com.yuerbao.gymms.user.model.User">
         SELECT * FROM user WHERE uId = #{uId}
+    </select>
+
+    <!--插入数据-->
+    <insert id="register" parameterType="com.yuerbao.gymms.user.model.User"   >
+        
+        insert into user (uName,uPassword,uEmail,uStudentId,uPhone,status) values('${uName}',${uPassword},'${uEmail}',${uStudentId},${uPhone},0);
+        
+    </insert>
+
+    <select id="findAll"  resultType="com.yuerbao.gymms.user.model.User">
+         SELECT  * FROM  user
+    </select>
+
+    <select id="findUser" parameterType="com.yuerbao.gymms.user.model.User" resultType="com.yuerbao.gymms.user.model.User">
+        SELECT  * FROM user WHERE  uName=${uName} AND  uPassword = ${uPassword}
     </select>
 
     <!--<resultMap id="userResultMap" type="com.springmybatis.model.User">-->

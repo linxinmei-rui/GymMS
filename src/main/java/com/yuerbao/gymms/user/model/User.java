@@ -1,15 +1,17 @@
 package com.yuerbao.gymms.user.model;
 
 
+import java.io.Serializable;
+
 /**
  * Created by lhp_mac on 2017/5/30.
  */
-public class User {
+public class User implements Serializable {
     private int uId ; //用户主键
     private String uName ; //用户姓名
     private String uPassword ;//用户密码
     private String uEmail ;//用户邮箱
-    private  String uStidentId; //用户学号
+    private  String uStudentId; //用户学号
     private String uPhone ; // 用户电话号码
     private int status ; // 用户状态 1 代表激活  0 代表未激活
 
@@ -45,12 +47,12 @@ public class User {
         this.uEmail = uEmail;
     }
 
-    public String getuStidentId() {
-        return uStidentId;
+    public String getuStudentId() {
+        return uStudentId;
     }
 
-    public void setuStidentId(String uStidentId) {
-        this.uStidentId = uStidentId;
+    public void setuStudentId(String uStudentId) {
+        this.uStudentId = uStudentId;
     }
 
     public String getuPhone() {
@@ -76,7 +78,7 @@ public class User {
                 ", uName='" + uName + '\'' +
                 ", uPassword='" + uPassword + '\'' +
                 ", uEmail='" + uEmail + '\'' +
-                ", uStidentId='" + uStidentId + '\'' +
+                ", uStidentId='" + uStudentId + '\'' +
                 ", uPhone='" + uPhone + '\'' +
                 ", status=" + status +
                 '}';

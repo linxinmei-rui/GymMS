@@ -40,7 +40,6 @@
         </property>
     </bean>
 
-    <mvc:annotation-driven/>
 
 
 

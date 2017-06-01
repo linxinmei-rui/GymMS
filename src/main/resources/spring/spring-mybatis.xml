@@ -18,7 +18,15 @@
     <!-- 配置SqlSessionFactory对象 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath*:com/yuerbao/gymms/**/*Mapper.xml" />
+    </bean>
+
+
+    <!-- 配置SqlSessionTemplate, 开启批量操作-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <constructor-arg name="executorType" value="BATCH"/>
     </bean>
 
     <!-- 扫描Mapper接口-->

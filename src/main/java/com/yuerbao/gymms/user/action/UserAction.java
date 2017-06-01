@@ -40,7 +40,7 @@ public class UserAction {
 		return vo;
 	}
 
-	@RequestMapping(value = "register", method = RequestMethod.GET)
+	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public @ResponseBody UserVo register(@RequestBody User user) {
 		/*
 		 * user.setuName("luhaipeng"); user.setuEmail("782580908@qq.com");

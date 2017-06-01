@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>title</title>
-    <base href="/gymms/">
+    <title>赛事预约管理</title>
+    <base href="/GymMS/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="resource/css/gymms.common.css" rel="stylesheet">
@@ -13,12 +13,24 @@
 <nav id="header" class="navbar navbar-inverse navbar-fixed-top"></nav>
 
 <!-- main ==================================================-->
+<br/><br/><br/><br/><br/>
 
 
-<br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/>123
-<br/><br/><br/><br/><br/><br/><br/>
+<div>
+
+</div>
+<table id="MatchBookingItemTable" class="table">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>预约编号</th>
+            <th>申请人</th>
+            <th>比赛名称</th>
+            <th>状态</th>
+            <th>更多信息</th>
+        </tr>
+    </thead>
+</table>
 
 
 
@@ -29,5 +41,10 @@
 <script src="resource/js/jquery-3.2.1.js"></script>
 <script src="resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="resource/js/gymms-common.js"></script>
+<script src="resource/js/gymms-match.js"></script>
+<script>
+    $("#MatchBookingItemTable").showUserMatchBookingTable();
+</script>
+
 </body>
 </html>

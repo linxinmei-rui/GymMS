@@ -40,10 +40,16 @@
     </servlet-mapping>
 
 
+
     <!-- 允许访问的静态资源 ====================================================== -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jsp</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

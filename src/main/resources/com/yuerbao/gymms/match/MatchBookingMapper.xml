@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuerbao.gymms.match.mapper.MatchBookingMapper">
+  <resultMap id="BaseResultMap" type="com.yuerbao.gymms.match.model.MatchBooking">
+    <id column="bk_id" jdbcType="INTEGER" property="bkId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="match_name" jdbcType="VARCHAR" property="matchName" />
+    <result column="match_desc" jdbcType="VARCHAR" property="matchDesc" />
+    <result column="qc_desc" jdbcType="VARCHAR" property="qcDesc" />
+    <result column="cd_desc" jdbcType="VARCHAR" property="cdDesc" />
+    <result column="time_desc" jdbcType="VARCHAR" property="timeDesc" />
+    <result column="contact_name_1" jdbcType="VARCHAR" property="contactName1" />
+    <result column="contact_phone_1" jdbcType="VARCHAR" property="contactPhone1" />
+    <result column="contact_name_2" jdbcType="VARCHAR" property="contactName2" />
+    <result column="contact_phone_2" jdbcType="VARCHAR" property="contactPhone2" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    bk_id, user_id, match_name, match_desc, qc_desc, cd_desc, time_desc, contact_name_1, 
+    contact_phone_1, contact_name_2, contact_phone_2, status
+  </sql>
+  <select id="selectByExample" parameterType="com.yuerbao.gymms.match.model.MatchBookingExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_match_booking
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_match_booking
+    where bk_id = #{bkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_match_booking
+    where bk_id = #{bkId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yuerbao.gymms.match.model.MatchBookingExample">
+    delete from tb_match_booking
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yuerbao.gymms.match.model.MatchBooking">
+    insert into tb_match_booking (bk_id, user_id, match_name, 
+      match_desc, qc_desc, cd_desc, 
+      time_desc, contact_name_1, contact_phone_1, 
+      contact_name_2, contact_phone_2, status
+      )
+    values (#{bkId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{matchName,jdbcType=VARCHAR}, 
+      #{matchDesc,jdbcType=VARCHAR}, #{qcDesc,jdbcType=VARCHAR}, #{cdDesc,jdbcType=VARCHAR}, 
+      #{timeDesc,jdbcType=VARCHAR}, #{contactName1,jdbcType=VARCHAR}, #{contactPhone1,jdbcType=VARCHAR}, 
+      #{contactName2,jdbcType=VARCHAR}, #{contactPhone2,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yuerbao.gymms.match.model.MatchBooking">
+    insert into tb_match_booking
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bkId != null">
+        bk_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="matchName != null">
+        match_name,
+      </if>
+      <if test="matchDesc != null">
+        match_desc,
+      </if>
+      <if test="qcDesc != null">
+        qc_desc,
+      </if>
+      <if test="cdDesc != null">
+        cd_desc,
+      </if>
+      <if test="timeDesc != null">
+        time_desc,
+      </if>
+      <if test="contactName1 != null">
+        contact_name_1,
+      </if>
+      <if test="contactPhone1 != null">
+        contact_phone_1,
+      </if>
+      <if test="contactName2 != null">
+        contact_name_2,
+      </if>
+      <if test="contactPhone2 != null">
+        contact_phone_2,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bkId != null">
+        #{bkId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="matchName != null">
+        #{matchName,jdbcType=VARCHAR},
+      </if>
+      <if test="matchDesc != null">
+        #{matchDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="qcDesc != null">
+        #{qcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDesc != null">
+        #{cdDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="timeDesc != null">
+        #{timeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName1 != null">
+        #{contactName1,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone1 != null">
+        #{contactPhone1,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName2 != null">
+        #{contactName2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone2 != null">
+        #{contactPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yuerbao.gymms.match.model.MatchBookingExample" resultType="java.lang.Long">
+    select count(*) from tb_match_booking
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_match_booking
+    <set>
+      <if test="record.bkId != null">
+        bk_id = #{record.bkId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.matchName != null">
+        match_name = #{record.matchName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.matchDesc != null">
+        match_desc = #{record.matchDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qcDesc != null">
+        qc_desc = #{record.qcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdDesc != null">
+        cd_desc = #{record.cdDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeDesc != null">
+        time_desc = #{record.timeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactName1 != null">
+        contact_name_1 = #{record.contactName1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactPhone1 != null">
+        contact_phone_1 = #{record.contactPhone1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactName2 != null">
+        contact_name_2 = #{record.contactName2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactPhone2 != null">
+        contact_phone_2 = #{record.contactPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_match_booking
+    set bk_id = #{record.bkId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      match_name = #{record.matchName,jdbcType=VARCHAR},
+      match_desc = #{record.matchDesc,jdbcType=VARCHAR},
+      qc_desc = #{record.qcDesc,jdbcType=VARCHAR},
+      cd_desc = #{record.cdDesc,jdbcType=VARCHAR},
+      time_desc = #{record.timeDesc,jdbcType=VARCHAR},
+      contact_name_1 = #{record.contactName1,jdbcType=VARCHAR},
+      contact_phone_1 = #{record.contactPhone1,jdbcType=VARCHAR},
+      contact_name_2 = #{record.contactName2,jdbcType=VARCHAR},
+      contact_phone_2 = #{record.contactPhone2,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yuerbao.gymms.match.model.MatchBooking">
+    update tb_match_booking
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="matchName != null">
+        match_name = #{matchName,jdbcType=VARCHAR},
+      </if>
+      <if test="matchDesc != null">
+        match_desc = #{matchDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="qcDesc != null">
+        qc_desc = #{qcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDesc != null">
+        cd_desc = #{cdDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="timeDesc != null">
+        time_desc = #{timeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName1 != null">
+        contact_name_1 = #{contactName1,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone1 != null">
+        contact_phone_1 = #{contactPhone1,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName2 != null">
+        contact_name_2 = #{contactName2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone2 != null">
+        contact_phone_2 = #{contactPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bk_id = #{bkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yuerbao.gymms.match.model.MatchBooking">
+    update tb_match_booking
+    set user_id = #{userId,jdbcType=INTEGER},
+      match_name = #{matchName,jdbcType=VARCHAR},
+      match_desc = #{matchDesc,jdbcType=VARCHAR},
+      qc_desc = #{qcDesc,jdbcType=VARCHAR},
+      cd_desc = #{cdDesc,jdbcType=VARCHAR},
+      time_desc = #{timeDesc,jdbcType=VARCHAR},
+      contact_name_1 = #{contactName1,jdbcType=VARCHAR},
+      contact_phone_1 = #{contactPhone1,jdbcType=VARCHAR},
+      contact_name_2 = #{contactName2,jdbcType=VARCHAR},
+      contact_phone_2 = #{contactPhone2,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where bk_id = #{bkId,jdbcType=INTEGER}
+  </update>
+</mapper>

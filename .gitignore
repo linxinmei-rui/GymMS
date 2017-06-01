@@ -90,3 +90,5 @@ buildNumber.properties
 .classpath
 .settings
 .metadata
+
+.GymMS.iml

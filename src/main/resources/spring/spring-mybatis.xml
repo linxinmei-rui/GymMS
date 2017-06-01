@@ -34,8 +34,8 @@
         <property name="basePackage" value="com.yuerbao.gymms.equipment,
                                             com.yuerbao.gymms.ground,
                                             com.yuerbao.gymms.match.mapper,
-                                            com.yuerbao.gymms.order
-                                            com.yuerbao.gymms.user"/>
+                                            com.yuerbao.gymms.order,
+                                            com.yuerbao.gymms.user.mapper"/>
     </bean>
 
     <!-- 事务 ===================================================================-->

@@ -9,10 +9,11 @@
     <mvc:annotation-driven/>
 
     <context:component-scan base-package="com.yuerbao.gymms.user.action"/>
-    <context:component-scan base-package="com.yuerbao.gymms.equipment.action"/>
-    <context:component-scan base-package="com.yuerbao.gymms.ground.action"/>
+    <!--<context:component-scan base-package="com.yuerbao.gymms.equipment.action"/>-->
+    <!--<context:component-scan base-package="com.yuerbao.gymms.ground.action"/>-->
     <context:component-scan base-package="com.yuerbao.gymms.match.action"/>
-    <context:component-scan base-package="com.yuerbao.gymms.order.action"/>
+
+    <!--<context:component-scan base-package="com.yuerbao.gymms.order.action"/>-->
 
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

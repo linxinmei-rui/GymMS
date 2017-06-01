@@ -18,7 +18,7 @@
 <br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/>
-
+<button class="btnLogin btn-primary">btn</button>
 
 
 
@@ -28,5 +28,36 @@
 <script src="resource/js/jquery-3.2.1.js"></script>
 <script src="resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="resource/js/gymms-common.js"></script>
+<script type="text/javascript">
+    $(function UserLogin() {
+       $('#btnLogin').click(QueryComment());
+       function QueryComment () {
+        var myJ = {"uName":"lu","uPassword":"123","uEmail":"123@qq.com","uStudentId":"123","uPhone":"123","status":123};
+       $.ajax({
+           url: 'http://localhost:8080/GymMS/user/register',
+           type: 'GET',
+           async: true,
+           dataType: 'json',
+           // contentType:'charset=utf-8',
+           data:JSON.stringify(myJ)
+       })
+       .done(function(data) {
+           console.log("success");
+           for(var attr in data){
+                console.log(data[attr]);
+            }
+           // console.log(data);
+       })
+       .fail(function() {
+           console.log("error");
+       })
+       .always(function() {
+           console.log("complete");
+       });
+       
+       }
+    })
+    
+</script>
 </body>
 </html>

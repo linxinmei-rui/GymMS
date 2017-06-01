@@ -14,6 +14,7 @@
     <result column="contact_name_2" jdbcType="VARCHAR" property="contactName2" />
     <result column="contact_phone_2" jdbcType="VARCHAR" property="contactPhone2" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     bk_id, user_id, match_name, match_desc, qc_desc, cd_desc, time_desc, contact_name_1, 
-    contact_phone_1, contact_name_2, contact_phone_2, status
+    contact_phone_1, contact_name_2, contact_phone_2, status, create_time
   </sql>
   <select id="selectByExample" parameterType="com.yuerbao.gymms.match.model.MatchBookingExample" resultMap="BaseResultMap">
     select
@@ -111,13 +112,13 @@
     insert into tb_match_booking (bk_id, user_id, match_name, 
       match_desc, qc_desc, cd_desc, 
       time_desc, contact_name_1, contact_phone_1, 
-      contact_name_2, contact_phone_2, status
-      )
+      contact_name_2, contact_phone_2, status, 
+      create_time)
     values (#{bkId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{matchName,jdbcType=VARCHAR}, 
       #{matchDesc,jdbcType=VARCHAR}, #{qcDesc,jdbcType=VARCHAR}, #{cdDesc,jdbcType=VARCHAR}, 
       #{timeDesc,jdbcType=VARCHAR}, #{contactName1,jdbcType=VARCHAR}, #{contactPhone1,jdbcType=VARCHAR}, 
-      #{contactName2,jdbcType=VARCHAR}, #{contactPhone2,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
-      )
+      #{contactName2,jdbcType=VARCHAR}, #{contactPhone2,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yuerbao.gymms.match.model.MatchBooking">
     insert into tb_match_booking
@@ -158,6 +159,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bkId != null">
@@ -195,6 +199,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +271,8 @@
       contact_phone_1 = #{record.contactPhone1,jdbcType=VARCHAR},
       contact_name_2 = #{record.contactName2,jdbcType=VARCHAR},
       contact_phone_2 = #{record.contactPhone2,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +313,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where bk_id = #{bkId,jdbcType=INTEGER}
   </update>
@@ -317,7 +331,8 @@
       contact_phone_1 = #{contactPhone1,jdbcType=VARCHAR},
       contact_name_2 = #{contactName2,jdbcType=VARCHAR},
       contact_phone_2 = #{contactPhone2,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where bk_id = #{bkId,jdbcType=INTEGER}
   </update>
 </mapper>

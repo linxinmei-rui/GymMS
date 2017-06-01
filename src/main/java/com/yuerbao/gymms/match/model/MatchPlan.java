@@ -17,6 +17,8 @@ public class MatchPlan {
 
     private Integer status;
 
+    private Date createTime;
+
     public Integer getMpId() {
         return mpId;
     }
@@ -71,5 +73,13 @@ public class MatchPlan {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

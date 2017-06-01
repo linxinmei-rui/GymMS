@@ -1,5 +1,7 @@
 package com.yuerbao.gymms.match.model;
 
+import java.util.Date;
+
 public class MatchBooking {
     private Integer bkId;
 
@@ -25,14 +27,12 @@ public class MatchBooking {
 
     private Integer status;
 
+    private Date createTime;
 
-    public MatchBooking() {}
+    public MatchBooking() {
+    }
 
-    public MatchBooking(Integer bkId, Integer userId, String matchName,
-                        String matchDesc, String qcDesc, String cdDesc,
-                        String timeDesc, String contactName1,
-                        String contactPhone1, String contactName2,
-                        String contactPhone2, Integer status) {
+    public MatchBooking(Integer bkId, Integer userId, String matchName, String matchDesc, String qcDesc, String cdDesc, String timeDesc, String contactName1, String contactPhone1, String contactName2, String contactPhone2, Integer status, Date createTime) {
         this.bkId = bkId;
         this.userId = userId;
         this.matchName = matchName;
@@ -45,6 +45,7 @@ public class MatchBooking {
         this.contactName2 = contactName2;
         this.contactPhone2 = contactPhone2;
         this.status = status;
+        this.createTime = createTime;
     }
 
     public Integer getBkId() {
@@ -141,5 +142,13 @@ public class MatchBooking {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

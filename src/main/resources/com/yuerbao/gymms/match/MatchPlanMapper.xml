@@ -9,6 +9,7 @@
     <result column="rent" jdbcType="INTEGER" property="rent" />
     <result column="desc" jdbcType="VARCHAR" property="desc" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    mp_id, manager_id, time_on, time_off, rent, desc, status
+    mp_id, manager_id, time_on, time_off, rent, desc, status, create_time
   </sql>
   <select id="selectByExample" parameterType="com.yuerbao.gymms.match.model.MatchPlanExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.yuerbao.gymms.match.model.MatchPlan">
     insert into tb_match_plan (mp_id, manager_id, time_on, 
       time_off, rent, desc, 
-      status)
+      status, create_time)
     values (#{mpId,jdbcType=INTEGER}, #{managerId,jdbcType=INTEGER}, #{timeOn,jdbcType=TIMESTAMP}, 
       #{timeOff,jdbcType=TIMESTAMP}, #{rent,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yuerbao.gymms.match.model.MatchPlan">
     insert into tb_match_plan
@@ -133,6 +134,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="mpId != null">
@@ -155,6 +159,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       time_off = #{record.timeOff,jdbcType=TIMESTAMP},
       rent = #{record.rent,jdbcType=INTEGER},
       desc = #{record.desc,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where mp_id = #{mpId,jdbcType=INTEGER}
   </update>
@@ -237,7 +251,8 @@
       time_off = #{timeOff,jdbcType=TIMESTAMP},
       rent = #{rent,jdbcType=INTEGER},
       desc = #{desc,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where mp_id = #{mpId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -30,7 +30,7 @@
 <script src="resource/js/gymms-common.js"></script>
 <script type="text/javascript">
     $(function UserLogin() {
-       $('#btnLogin').click(QueryComment());
+      
        function QueryComment () {
         var myJ = {"uName":"lu","uPassword":"123","uEmail":"123@qq.com","uStudentId":"123","uPhone":"123","status":123};
        $.ajax({
@@ -55,6 +55,8 @@
        });
        
        }
+       
+       $('#btnLogin').click(QueryComment());
     })
     
 </script>

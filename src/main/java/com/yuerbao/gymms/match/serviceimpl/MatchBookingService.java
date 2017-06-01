@@ -2,6 +2,7 @@ package com.yuerbao.gymms.match.serviceimpl;
 
 import com.yuerbao.gymms.match.mapper.MatchBookingMapper;
 import com.yuerbao.gymms.match.model.MatchBooking;
+import com.yuerbao.gymms.match.model.MatchBookingExample;
 import com.yuerbao.gymms.match.service.IMatchBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,6 @@ public class MatchBookingService implements IMatchBookingService {
     @Autowired
     MatchBookingMapper matchBookingMapper;
 
-    public List<MatchBooking> selectMatchBookingByUser() {
-        return null;
-    }
 
     /**
      * 返回所有赛事预约
@@ -28,4 +26,19 @@ public class MatchBookingService implements IMatchBookingService {
     public List<MatchBooking> selectAllMatchBooking() {
         return matchBookingMapper.selectByExample(null);
     }
+
+    /**
+     * 返回用户id为userId的用户赛事预约数据。
+     * @param userId
+     * @return
+     */
+    public List<MatchBooking> selectAllMatchBookingOfUser(Integer userId) {
+        MatchBookingExample example = new MatchBookingExample();
+        MatchBookingExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+
+        return matchBookingMapper.selectByExample(example);
+    }
+
+
 }

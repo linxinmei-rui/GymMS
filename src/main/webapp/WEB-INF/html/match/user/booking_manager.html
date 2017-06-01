@@ -16,21 +16,47 @@
 <br/><br/><br/><br/><br/>
 
 
-<div>
+
+<div class="container">
+    <!--标题-->
+    <div class="row">
+        <div class="col-md-12">
+            <h1>赛事预约管理</h1>
+        </div>
+    </div>
+
+    <!--按钮-->
+    <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+            <button class="btn btn-danger">申请</button>
+        </div>
+    </div>
+
+    <!--表格-->
+    <div class="row">
+        <table id="match_booking_table" class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>预约编号</th>
+                <th>赛事名称</th>
+                <th>申请人</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!--分页-->
+    <div class="row">
+        <div id="page_info_area" class="col-md-6"></div>
+        <div id="page_info_nav" class="col-md-6"></div>
+    </div>
 
 </div>
-<table id="MatchBookingItemTable" class="table">
-    <thead>
-        <tr>
-            <th>序号</th>
-            <th>预约编号</th>
-            <th>申请人</th>
-            <th>比赛名称</th>
-            <th>状态</th>
-            <th>更多信息</th>
-        </tr>
-    </thead>
-</table>
 
 
 
@@ -43,7 +69,124 @@
 <script src="resource/js/gymms-common.js"></script>
 <script src="resource/js/gymms-match.js"></script>
 <script>
-    $("#MatchBookingItemTable").showUserMatchBookingTable();
+
+    var userId = 1001;
+
+    $(function () {
+        to_page(1);
+    });
+
+    //显示预约数据表格
+    function build_match_booking_table(result) {
+        $("#match_booking_table tbody").empty();
+
+        var pageInfo = result.extend.pageInfo;
+        var bookings = result.extend.pageInfo.list;
+        $.each(bookings, function (index, item) {
+
+            var bkItemRowTd = $("<td></td>").append(pageInfo.startRow+index);
+            var bkIdTd = $("<td></td>").append(item.bkId);
+            var bkNameTd = $("<td></td>").append(item.matchName);
+            var bkUserTd = $("<td></td>").append(item.userId);
+            var bkStatusTd = $("<td></td>").append(item.status);
+            //var btManager
+            var bkMoreTd = $("<td></td>").append();
+
+            $("<tr></tr>").append(bkItemRowTd)
+                .append(bkIdTd)
+                .append(bkNameTd)
+                .append(bkUserTd)
+                .append(bkStatusTd)
+                .append(bkMoreTd)
+                .appendTo("#match_booking_table tbody");
+        });
+    }
+
+    //显示分页信息
+    function build_page_info(result) {
+        $("#page_info_area").empty();
+
+        var pageInfo = result.extend.pageInfo;
+        $("#page_info_area").append(
+            "第"+pageInfo.pageNum+"页，" +
+            "共"+pageInfo.pages+"页，" +
+            "共"+pageInfo.total+"条数据");
+    }
+
+    //显示分页条
+    function build_page_nav(result) {
+        $("#page_info_nav").empty();
+
+        var pageInfo = result.extend.pageInfo;
+        var ul = $("<ul></ul>").addClass("pagination");
+        var firstPageLi = $("<li></li>").append($("<a></a>").append("首页"));
+        var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+        var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+        var endPageLi = $("<li></li>").append($("<a></a>").append("尾页"));
+
+        if (pageInfo.hasPreviousPage == false){
+            firstPageLi.addClass("disabled");
+            prePageLi.addClass("disabled");
+        }else {
+            firstPageLi.click(function () {
+                to_page(1);
+            });
+            prePageLi.click(function () {
+                to_page(pageInfo.prePage);
+            });
+        }
+
+        if (pageInfo.hasNextPage == false){
+            nextPageLi.addClass("disabled")
+            endPageLi.addClass("disabled")
+        }else{
+            nextPageLi.click(function () {
+                to_page(pageInfo.nextPage);
+            });
+            endPageLi.click(function () {
+                to_page(pageInfo.pages);
+            });
+        }
+
+
+
+        ul.append(firstPageLi);
+        ul.append(prePageLi);
+
+        $.each(pageInfo.navigatepageNums, function (index, item) {
+            var numLi = $("<li></li>").append($("<a></a>").append(item));
+            if (pageInfo.pageNum == item){
+                numLi.addClass("active");
+            }
+            numLi.click(function () {
+                to_page(item);
+            });
+            ul.append(numLi);
+        });
+
+        ul.append(nextPageLi);
+        ul.append(endPageLi);
+
+        $("<nav></nav>").append(ul).appendTo("#page_info_nav");
+
+    }
+
+    //发送ajax请求获取分页数据
+    function to_page(pn) {
+        $.ajax({
+            url:"match/user/items",
+            data:"userId="+userId+"&pn="+pn,
+            type:"GET",
+            success:function (result) {
+                build_match_booking_table(result);
+                build_page_info(result);
+                build_page_nav(result);
+            }
+        });
+    }
+
+
+
 </script>
 
 </body>

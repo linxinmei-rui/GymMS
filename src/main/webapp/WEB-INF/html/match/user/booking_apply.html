@@ -14,81 +14,99 @@
 <br/><br/><br/><br/><br/>
 <!-- main ==================================================-->
 
-<form class="form-horizontal" role="form">
-    <div class="container">
-        
-        <div class="form-group">
-            <label for="MatchName" class="col-md-4 control-label">比赛名称</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="MatchName" placeholder="*必填">
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label for="MatchIntroduction" class="col-md-4 control-label">比赛简介</label>
-            <div class="col-md-6">
-                <textarea class="form-control" id="MatchIntroduction" rows="2"  placeholder="*必填"></textarea>
-            </div>
+<div class="container">
+    <!--标题-->
+    <div class="row">
+        <div class="col-md-12">
+            <h1>赛事预约申请</h1>
         </div>
-
-        <div class="form-group">
-            <label for="MatchTimeDesc" class="col-md-4 control-label">比赛时间描述</label>
-            <div class="col-md-6">
-                <textarea class="form-control" id="MatchTimeDesc" rows="2"  placeholder="*必填"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="MatchGroundDesc" class="col-md-4 control-label">场地需求描述</label>
-            <div class="col-md-6">
-                <textarea class="form-control" id="MatchGroundDesc" rows="2" placeholder="*必填"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="MatchEquipmentDesc" class="col-md-4 control-label">器材需求描述</label>
-            <div class="col-md-6">
-                <textarea class="form-control" id="MatchEquipmentDesc" rows="2" placeholder="*必填"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="MatchPeople1" class="col-md-4 control-label">联系人1</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="MatchPeople1" placeholder="*必填">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="MatchContact1" class="col-md-4 control-label">联系方式</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="MatchContact1" placeholder="*必填">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="MatchPeople2" class="col-md-4 control-label">联系人2</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="MatchPeople2">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="MatchContact2" class="col-md-4 control-label">联系方式</label>
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="MatchContact2">
-            </div>
-        </div>
-
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary">提交</button>
-            <button type="reset"  class="btn btn-warning">重置</button>
-        </div>
-
     </div>
-</form>
 
+    <!--表单-->
+    <div class="row">
 
+        <form id="match_booking_form" class="form-horizontal text-center" role="form">
+                <!--赛事名称-->
+                <div class="form-group">
+                    <label for="match_name" class="col-md-4 control-label">比赛名称</label>
+                    <div class="col-md-6">
+                        <input type="text" id="match_name" name="matchName" class="form-control" placeholder="*必填">
+                    </div>
+                </div>
+
+                <!--赛事描述-->
+                <div class="form-group">
+                    <label for="match_introduction" class="col-md-4 control-label">比赛简介</label>
+                    <div class="col-md-6">
+                        <textarea id="match_introduction" name="matchDesc" class="form-control" rows="2"  placeholder="*必填"></textarea>
+                    </div>
+                </div>
+
+                <!--赛事时间描述-->
+                <div class="form-group">
+                    <label for="match_time_desc" class="col-md-4 control-label">比赛时间描述</label>
+                    <div class="col-md-6">
+                        <textarea id="match_time_desc" name="timeDesc" class="form-control" rows="2"  placeholder="*必填"></textarea>
+                    </div>
+                </div>
+
+                <!--场地需求描述-->
+                <div class="form-group">
+                    <label for="match_cd_desc" class="col-md-4 control-label">场地需求描述</label>
+                    <div class="col-md-6">
+                        <textarea id="match_cd_desc" name="cdDesc" class="form-control" rows="2" placeholder="*必填"></textarea>
+                    </div>
+                </div>
+
+                <!--器材需求描述-->
+                <div class="form-group">
+                    <label for="match_qc_desc" class="col-md-4 control-label">器材需求描述</label>
+                    <div class="col-md-6">
+                        <textarea id="match_qc_desc" name="qcDesc" class="form-control" rows="2" placeholder="*必填"></textarea>
+                    </div>
+                </div>
+
+                <!--联系人1-->
+                <div class="form-group">
+                    <label for="match_people_1" class="col-md-4 control-label">联系人1</label>
+                    <div class="col-md-6">
+                        <input type="text" id="match_people_1" name="contactName1" class="form-control" placeholder="*必填">
+                    </div>
+                </div>
+
+                <!--联系人1电话-->
+                <div class="form-group">
+                    <label for="match_contact_1" class="col-md-4 control-label">联系方式</label>
+                    <div class="col-md-6">
+                        <input type="text" id="match_contact_1" name="contactPhone1" class="form-control" placeholder="*必填">
+                    </div>
+                </div>
+
+                <!--联系人2-->
+                <div class="form-group">
+                    <label for="match_people_2" class="col-md-4 control-label">联系人2</label>
+                    <div class="col-md-6">
+                        <input type="text" id="match_people_2" name="contactName2" class="form-control">
+                    </div>
+                </div>
+
+                <!--联系人2电话-->
+                <div class="form-group">
+                    <label for="match_contact_2" class="col-md-4 control-label">联系方式</label>
+                    <div class="col-md-6">
+                        <input type="text" id="match_contact_2" name="contactPhone2" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" id="match_apply_btn" class="btn btn-primary">提交</button>
+                    <button type="reset"  class="btn btn-warning">重置</button>
+                </div>
+        </form>
+    </div>
+
+</div>
 
 
 
@@ -101,7 +119,23 @@
 <script src="resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="resource/js/gymms-common.js"></script>
 <script>
+    $("#match_apply_btn").click(function () {
+        //获取表单数据
+        var form = $("#match_booking_form").serialize();
+        //处理中文与空格问题
+        form = decodeURIComponent(form);
+        alert(form);
 
+        $.ajax({
+            url:"match/user/applyMatchBooking",
+            type:"PUT",
+            data:form,
+            success:function (result) {
+                //alert("保存成功");
+                alert(result.code);
+            }
+        });
+    });
 </script>
 </body>
 </html>

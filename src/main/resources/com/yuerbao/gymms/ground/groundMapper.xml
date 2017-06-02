@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuerbao.gymms.ground.mapper.GroundMapper">
+
+    <insert id="addGround" parameterType="com.yuerbao.gymms.ground.model.Ground">
+        INSERT INTO  ground (gName,gFee,gStatus,gRemark) VALUES ('${gName}',${gFee},1,'${gRemark}')
+    </insert>
+
+    <delete id="deleteGroundById" >
+        DELETE  FROM  ground where gId = ${gId}
+    </delete>
+
+    
+    <update id="updateGroundById">
+        UPDATE  ground set
+          gName='${gName}',
+          gFee = ${gFee},
+          gStatus = ${gStatus},
+          gRemark = ${gRemark}
+          WHERE gId = ${gId}
+    </update>
+
+    <!--分页查询-->
+    <select id="getGroundList" resultType="com.yuerbao.gymms.ground.model.Ground">
+        SELECT  * FROM  ground limit ${start},${count}
+    </select>
+
+    <select id="getCount" >
+        SELECT count(*) FROM user
+    </select>
+    
+    
+    <insert id="bookGround" parameterType="com.yuerbao.gymms.ground.model.GroundBook">
+        INSERT  INTO  groundbook(uId,gId,bDate,bStartTime,bEndTime,bFee,bStatus)
+        VALUES (${user.uId},${ground.gId},'${bDate}','${bStartTime}','${bEndTime}',${bFee},0)
+    </insert>
+
+    <!--改变预定场地的状态-->
+    <update id="updateBookGround" parameterType="com.yuerbao.gymms.ground.model.GroundBook">
+       UPDATE  groundbook set
+       bStatus = ${bStatus}
+        WHERE bId = ${bId}
+    </update>
+
+
+</mapper>

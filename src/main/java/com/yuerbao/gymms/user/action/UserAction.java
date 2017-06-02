@@ -49,6 +49,7 @@ public class UserAction {
 
 	/**
 	 * @return List<User>
+	 *
 	 */
 	@RequestMapping(value = "getAllUser", method = RequestMethod.GET)
 	@ResponseBody

@@ -12,17 +12,18 @@
         SELECT * FROM user WHERE uId = #{uId}
     </select>
 
-    <!--插入数据-->
-    <insert id="register" parameterType="com.yuerbao.gymms.user.model.User"   >
+    <!--插入一条数据-->
+    <insert id="register"  parameterType="com.yuerbao.gymms.user.model.User" >
         
         insert into user (uName,uPassword,uEmail,uStudentId,uPhone,status) values('${uName}',${uPassword},'${uEmail}',${uStudentId},${uPhone},0);
         
     </insert>
-
+<!--查询所有的用户-->
     <select id="findAll"  resultType="com.yuerbao.gymms.user.model.User">
          SELECT  * FROM  user
     </select>
 
+    <!--根据账号密码查询用户-->
     <select id="findUser" parameterType="com.yuerbao.gymms.user.model.User" resultType="com.yuerbao.gymms.user.model.User">
         SELECT  * FROM user WHERE  uName=${uName} AND  uPassword = ${uPassword}
     </select>

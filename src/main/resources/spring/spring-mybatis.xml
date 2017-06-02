@@ -24,7 +24,7 @@
     <!-- 扫描Mapper接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.yuerbao.gymms.equipment,
-                                            com.yuerbao.gymms.ground,
+                                            com.yuerbao.gymms.ground.mapper,
                                             com.yuerbao.gymms.match.mapper,
                                             com.yuerbao.gymms.order,
                                             com.yuerbao.gymms.user.mapper"/>

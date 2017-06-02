@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService{
 
     public UserVo Login(User user) {
         User loginUser = userMapper.findUser(user);
+
         UserVo userVo = new UserVo();
         userVo.setStatus(1);
 
@@ -35,6 +36,10 @@ public class UserServiceImpl implements UserService{
         return userVo;
     }
 
+
+    public User getUser(User user) {
+        return userMapper.findUser(user);
+    }
 
     public UserVo register(User user) {
 

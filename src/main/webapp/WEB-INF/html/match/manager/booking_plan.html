@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>赛事预约安排</title>
+    <base href="/GymMS/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resource/css/gymms.common.css" rel="stylesheet">
+</head>
+<body>
+<!--顶部导航栏 ===============================================-->
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top"></nav>
+<br/><br/><br/>
+<!-- main ==================================================-->
+
+<div class="container">
+    <!--标题-->
+    <div class="row">
+        <div class="col-md-12">
+            <h1>赛事预约安排</h1>
+        </div>
+    </div>
+
+    <br/>
+
+    <!--按钮-->
+    <div class="row">
+        <div class="col-md-4"><h3>场地安排</h3></div>
+        <div class="col-md-2 col-md-offset-10">
+            <button id="cd_add_btn" class="btn btn-primary btn-sm">添加</button>
+        </div>
+    </div>
+
+    <!--场地安排表格-->
+    <div class="row">
+        <table id="cd_plan_table" class="table">
+            <thead>
+            <tr class="info">
+                <th>场地编号</th>
+                <th>场地名称</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>金额（元）</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <br/><br/><br/>
+
+
+    <!--按钮-->
+    <div class="row">
+        <div class="col-md-4"><h3>器材安排</h3></div>
+        <div class="col-md-2 col-md-offset-10">
+            <button id="qc_add_btn" class="btn btn-primary btn-sm">添加</button>
+        </div>
+
+    </div>
+    <!--器材安排表格-->
+    <div class="row">
+        <table id="qc_plan_table" class="table">
+            <thead>
+            <tr class="success">
+                <th>器材编号</th>
+                <th>器材名称</th>
+                <th>数量</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>金额（元）</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--场地模态框-->
+
+<div id="cd_plan_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">场地安排</h4>
+            </div>
+            <div class="modal-body">
+                <!--***********************************-->
+                <form id="cd_plan_form" class="form-horizontal text-center" role="form">
+                    <div class="form-group">
+                        <label for="cd_select" class="col-sm-2 control-label">场地</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="cd_select"></select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="cd_desc_input" class="col-sm-2 control-label">备注</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="cd_desc_input" rows="3"></textarea>
+                        </div>
+                    </div>
+
+
+                </form>
+                <!--***********************************-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+<!--器材模态框-->
+
+<div id="qc_plan_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">器材安排</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- footer=================================================-->
+<br/><br/><br/>
+<div id="footer" class="footer well well-lg"></div>
+<!-- js -->
+<script src="resource/js/jquery-3.2.1.js"></script>
+<script src="resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="resource/js/gymms-common.js"></script>
+<script>
+    //获取管理页面传递过来的bkId
+    var thisURL = document.URL;
+    var URLArray = thisURL.split('/');
+    var bkId = URLArray[URLArray.length-1];
+
+    //点击按钮绑定事件********************************
+
+    //场地添加按钮
+    $(document).on("click", "#cd_add_btn", function () {
+        $("#cd_plan_modal").modal({
+            backdrop:"static"
+        });
+    });
+
+    //器材添加按钮
+    $(document).on("click", "#qc_add_btn", function () {
+        $("#qc_plan_modal").modal({
+            backdrop:"static"
+        });
+    });
+
+    //构建场地
+
+
+    //构建器材
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

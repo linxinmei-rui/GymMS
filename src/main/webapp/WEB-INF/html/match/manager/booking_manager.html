@@ -58,6 +58,7 @@
 
 
 
+
 <!-- footer=================================================-->
 <br/><br/><br/><br/><br/>
 <div id="footer" class="footer well well-lg"></div>
@@ -83,15 +84,30 @@
             var bkNameTd = $("<td></td>").append(item.matchName);
             var bkUserTd = $("<td></td>").append(item.userId);
             var bkStatusTd = $("<td></td>").append(item.status);
-            //var btManager
-            var bkMoreTd = $("<td></td>").append();
+            //按钮
+            var checkBtn = $("<button></button>").addClass("btn btn-info btn-sm btn_check")
+                .append($("<span></span>").addClass("glyphicon glyphicon-info-sign").append("查看"))
+                .attr("check_id", item.bkId);;
+
+            var planBtn = $("<button></button>").addClass("btn btn-primary btn-sm btn_plan")
+                .append($("<span></span>").addClass("glyphicon glyphicon-pencil").append("审核"))
+                .attr("plan_id", item.bkId);
+
+            var refuseBtn = $("<button></button>").addClass("btn btn-danger btn-sm btn_refuse")
+                .append($("<span></span>").addClass("glyphicon glyphicon-trash").append("拒绝"))
+                .attr("refuse_id", item.bkId);
+
+            var btnTd = $("<td></td>").append(checkBtn).append(" ").append(planBtn).append(" ").append(refuseBtn);
+
+            //
+
 
             $("<tr></tr>").append(bkItemRowTd)
                 .append(bkIdTd)
                 .append(bkNameTd)
                 .append(bkUserTd)
                 .append(bkStatusTd)
-                .append(bkMoreTd)
+                .append(btnTd)
                 .appendTo("#match_booking_table tbody");
         });
     }
@@ -168,7 +184,7 @@
     //发送ajax请求获取分页数据
     function to_page(pn) {
         $.ajax({
-            url:"match/manager/booking/getAllItem",
+            url:"match/bookings",
             data:"pn="+pn,
             type:"GET",
             success:function (result) {
@@ -179,6 +195,10 @@
         });
     }
 
+    //审核按钮绑定事件
+    $(document).on("click", ".btn_plan", function () {
+        window.location.replace("match/plan/"+$(this).attr("plan_id"));
+    });
 
 </script>
 </body>

@@ -26,7 +26,7 @@
         <property name="basePackage" value="com.yuerbao.gymms.equipment,
                                             com.yuerbao.gymms.ground.mapper,
                                             com.yuerbao.gymms.match.mapper,
-                                            com.yuerbao.gymms.order,
+                                            com.yuerbao.gymms.admin.mapper,
                                             com.yuerbao.gymms.user.mapper"/>
     </bean>
 

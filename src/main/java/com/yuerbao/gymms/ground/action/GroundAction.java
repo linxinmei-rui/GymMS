@@ -90,7 +90,16 @@ public class GroundAction {
     @RequestMapping(value = "examineGround",method = RequestMethod.POST)
     public @ResponseBody
     BookGroundVo examineGround(@RequestBody GroundBook groundBook) {
+
         return groundService.examineGround(groundBook);
     }
+
+
+
+
+
+
+
+
 
 }

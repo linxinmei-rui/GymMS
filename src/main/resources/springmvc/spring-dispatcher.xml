@@ -9,7 +9,7 @@
     <!--<context:component-scan base-package="com.yuerbao.gymms.equipment.action"/>-->
     <context:component-scan base-package="com.yuerbao.gymms.ground.action"/>
     <context:component-scan base-package="com.yuerbao.gymms.match.action"/>
-
+    <context:component-scan base-package="com.yuerbao.gymms.admin.action"/>
     <!--<context:component-scan base-package="com.yuerbao.gymms.order.action"/>-->
 
     <!--fast json 驱动配置-->

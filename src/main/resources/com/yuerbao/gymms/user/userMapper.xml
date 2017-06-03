@@ -25,7 +25,7 @@
 
     <!--根据账号密码查询用户-->
     <select id="findUser" parameterType="com.yuerbao.gymms.user.model.User" resultType="com.yuerbao.gymms.user.model.User">
-        SELECT  * FROM user WHERE  uName=${uName} AND  uPassword = ${uPassword}
+        SELECT  * FROM user WHERE  uName= '${uName}' AND  uPassword = '${uPassword}'
     </select>
 
     <!--<resultMap id="userResultMap" type="com.springmybatis.model.User">-->

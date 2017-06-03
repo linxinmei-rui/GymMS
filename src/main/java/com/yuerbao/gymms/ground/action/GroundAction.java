@@ -27,9 +27,9 @@ public class GroundAction {
      * @param ground ${gName,gFee,gRemark}
      * @return
      */
-    @RequestMapping(value = "addGround", method = RequestMethod.GET)
+    @RequestMapping(value = "addGround", method = RequestMethod.POST)
     public @ResponseBody
-    GroundCrudVo addGround( Ground ground) {
+    GroundCrudVo addGround(@RequestBody Ground ground) {
 
         return groundService.addGround(ground);
     }
@@ -64,8 +64,9 @@ public class GroundAction {
      */
     @RequestMapping(value = "getGroundByPage", method = RequestMethod.POST)
     public @ResponseBody
-    PageBean<Ground> getGroundByPage(@RequestBody PageBean<Ground> pageBean) {
-        return groundService.getGroundByPage(pageBean);
+    PageBean<Ground> getGroundByPage(@RequestBody  PageBean<Ground> pageBean) {
+        pageBean =    groundService.getGroundByPage(pageBean);
+        return pageBean;
     }
 
 

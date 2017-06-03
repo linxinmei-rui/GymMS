@@ -23,12 +23,12 @@
     </update>
 
     <!--分页查询-->
-    <select id="getGroundList" resultType="com.yuerbao.gymms.ground.model.Ground">
-        SELECT  * FROM  ground limit ${start},${count}
+    <select id="getGroundList"  resultType="com.yuerbao.gymms.ground.model.Ground">
+        SELECT * FROM  ground limit ${start},${count}
     </select>
 
-    <select id="getCount" >
-        SELECT count(*) FROM user
+    <select id="getCount" resultType="Integer">
+        SELECT count(*) FROM ground
     </select>
     
     

@@ -3,6 +3,7 @@ package com.yuerbao.gymms.ground.mapper;
 import com.yuerbao.gymms.ground.model.Ground;
 import com.yuerbao.gymms.ground.model.GroundBook;
 import com.yuerbao.gymms.utils.PageBean;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface GroundMapper {
 
    public int updateGroundById(Ground ground);
 
-   public List<Ground> getGroundList(int start, int count );
+   public List<Ground> getGroundList(@Param(value = "start") int start,@Param(value = "count") int count );
 
    public int getCount();
 
